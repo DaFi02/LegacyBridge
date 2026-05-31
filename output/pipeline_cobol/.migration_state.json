@@ -1,0 +1,432 @@
+{
+  "project_name": "cobol",
+  "source_language": "cobol",
+  "target_language": "rust",
+  "state": "failed",
+  "source_dir": "examples/cobol",
+  "output_dir": "output/pipeline_cobol",
+  "created_at": "2026-05-31T18:33:39.085927",
+  "updated_at": "2026-05-31T18:33:45.594836",
+  "total_files": 2,
+  "total_symbols": 16,
+  "total_lines": 199,
+  "file_analyses": {
+    "inventory.cob": {
+      "filepath": "examples/cobol/inventory.cob",
+      "language": "cobol",
+      "total_lines": 95,
+      "imports": [
+        "IDENTIFICATION DIVISION",
+        "DATA DIVISION",
+        "PROCEDURE DIVISION"
+      ],
+      "global_vars": [
+        "WS-PRODUCT",
+        "WS-TOTALS",
+        "WS-LOW-STOCK-LIMIT",
+        "WS-SEARCH-CODE",
+        "WS-FOUND-FLAG"
+      ],
+      "symbols": [
+        {
+          "name": "MAIN-PROGRAM",
+          "kind": "function",
+          "start_line": 29,
+          "end_line": 34,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 5
+        },
+        {
+          "name": "INITIALIZE-INVENTORY",
+          "kind": "function",
+          "start_line": 35,
+          "end_line": 43,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "ADD-SAMPLE-PRODUCTS",
+          "kind": "function",
+          "start_line": 44,
+          "end_line": 65,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 4
+        },
+        {
+          "name": "REGISTER-PRODUCT",
+          "kind": "function",
+          "start_line": 66,
+          "end_line": 74,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "CHECK-LOW-STOCK",
+          "kind": "function",
+          "start_line": 75,
+          "end_line": 84,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 2
+        },
+        {
+          "name": "END-IF",
+          "kind": "function",
+          "start_line": 85,
+          "end_line": 85,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 2
+        },
+        {
+          "name": "DISPLAY-SUMMARY",
+          "kind": "function",
+          "start_line": 86,
+          "end_line": 95,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        }
+      ]
+    },
+    "payroll.cob": {
+      "filepath": "examples/cobol/payroll.cob",
+      "language": "cobol",
+      "total_lines": 104,
+      "imports": [
+        "IDENTIFICATION DIVISION",
+        "ENVIRONMENT DIVISION",
+        "DATA DIVISION",
+        "PROCEDURE DIVISION"
+      ],
+      "global_vars": [
+        "EMPLOYEE-RECORD",
+        "REPORT-LINE",
+        "WS-GROSS-PAY",
+        "WS-TAX",
+        "WS-NET-PAY",
+        "WS-OVERTIME-HOURS",
+        "WS-OVERTIME-PAY",
+        "WS-TAX-RATE",
+        "WS-OVERTIME-RATE",
+        "WS-STANDARD-HOURS",
+        "WS-TOTAL-PAYROLL",
+        "WS-EMP-COUNT",
+        "WS-EOF-FLAG"
+      ],
+      "symbols": [
+        {
+          "name": "FILE-CONTROL",
+          "kind": "function",
+          "start_line": 11,
+          "end_line": 45,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "MAIN-PROGRAM",
+          "kind": "function",
+          "start_line": 46,
+          "end_line": 50,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 4
+        },
+        {
+          "name": "INITIALIZE-PROCESS",
+          "kind": "function",
+          "start_line": 51,
+          "end_line": 59,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "END-READ",
+          "kind": "function",
+          "start_line": 60,
+          "end_line": 60,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "PROCESS-EMPLOYEES",
+          "kind": "function",
+          "start_line": 61,
+          "end_line": 70,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 5
+        },
+        {
+          "name": "END-READ",
+          "kind": "function",
+          "start_line": 71,
+          "end_line": 71,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "CALCULATE-PAY",
+          "kind": "function",
+          "start_line": 72,
+          "end_line": 84,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 3
+        },
+        {
+          "name": "GENERATE-REPORT-LINE",
+          "kind": "function",
+          "start_line": 85,
+          "end_line": 93,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "FINALIZE-PROCESS",
+          "kind": "function",
+          "start_line": 94,
+          "end_line": 104,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        }
+      ]
+    }
+  },
+  "segments": {
+    "inventory::header": {
+      "segment_id": "inventory::header",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "inventory::MAIN-PROGRAM": {
+      "segment_id": "inventory::MAIN-PROGRAM",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "inventory::INITIALIZE-INVENTORY": {
+      "segment_id": "inventory::INITIALIZE-INVENTORY",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "inventory::ADD-SAMPLE-PRODUCTS": {
+      "segment_id": "inventory::ADD-SAMPLE-PRODUCTS",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "inventory::REGISTER-PRODUCT": {
+      "segment_id": "inventory::REGISTER-PRODUCT",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "inventory::CHECK-LOW-STOCK": {
+      "segment_id": "inventory::CHECK-LOW-STOCK",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "inventory::END-IF": {
+      "segment_id": "inventory::END-IF",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "inventory::DISPLAY-SUMMARY": {
+      "segment_id": "inventory::DISPLAY-SUMMARY",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::header": {
+      "segment_id": "payroll::header",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::globals": {
+      "segment_id": "payroll::globals",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::FILE-CONTROL": {
+      "segment_id": "payroll::FILE-CONTROL",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::MAIN-PROGRAM": {
+      "segment_id": "payroll::MAIN-PROGRAM",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::INITIALIZE-PROCESS": {
+      "segment_id": "payroll::INITIALIZE-PROCESS",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::END-READ": {
+      "segment_id": "payroll::END-READ",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::PROCESS-EMPLOYEES": {
+      "segment_id": "payroll::PROCESS-EMPLOYEES",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::CALCULATE-PAY": {
+      "segment_id": "payroll::CALCULATE-PAY",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::GENERATE-REPORT-LINE": {
+      "segment_id": "payroll::GENERATE-REPORT-LINE",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    },
+    "payroll::FINALIZE-PROCESS": {
+      "segment_id": "payroll::FINALIZE-PROCESS",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "API error 401: {\"status\":401,\"title\":\"Unauthorized\",\"detail\":\"Authentication failed\"}",
+      "migrated_code": null,
+      "validation_passed": false
+    }
+  },
+  "total_segments": 18,
+  "segments_completed": 0,
+  "segments_failed": 18,
+  "rules_violations": [],
+  "event_log": [
+    {
+      "type": "project_initialized",
+      "detail": "cobol → rust",
+      "timestamp": "2026-05-31T18:33:39.085954"
+    },
+    {
+      "type": "state_transition",
+      "detail": "idle → analyzing (Iniciando análisis)",
+      "timestamp": "2026-05-31T18:33:39.086347"
+    },
+    {
+      "type": "state_transition",
+      "detail": "analyzing → analyzed (Análisis completado)",
+      "timestamp": "2026-05-31T18:33:39.090710"
+    },
+    {
+      "type": "state_transition",
+      "detail": "analyzed → segmenting (Segmentando código)",
+      "timestamp": "2026-05-31T18:33:39.091185"
+    },
+    {
+      "type": "state_transition",
+      "detail": "segmenting → segmented (Segmentación completada)",
+      "timestamp": "2026-05-31T18:33:39.102163"
+    },
+    {
+      "type": "state_transition",
+      "detail": "segmented → migrating (Migrando segmentos)",
+      "timestamp": "2026-05-31T18:33:39.102631"
+    },
+    {
+      "type": "state_transition",
+      "detail": "migrating → validating (Validando compilación)",
+      "timestamp": "2026-05-31T18:33:45.593101"
+    },
+    {
+      "type": "state_transition",
+      "detail": "validating → failed (Sin código migrado)",
+      "timestamp": "2026-05-31T18:33:45.594854"
+    }
+  ]
+}

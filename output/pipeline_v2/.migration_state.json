@@ -1,0 +1,432 @@
+{
+  "project_name": "cobol",
+  "source_language": "cobol",
+  "target_language": "rust",
+  "state": "migrating",
+  "source_dir": "examples/cobol",
+  "output_dir": "output/pipeline_v2",
+  "created_at": "2026-05-31T18:41:32.849402",
+  "updated_at": "2026-05-31T18:42:49.803020",
+  "total_files": 2,
+  "total_symbols": 16,
+  "total_lines": 199,
+  "file_analyses": {
+    "inventory.cob": {
+      "filepath": "examples/cobol/inventory.cob",
+      "language": "cobol",
+      "total_lines": 95,
+      "imports": [
+        "IDENTIFICATION DIVISION",
+        "DATA DIVISION",
+        "PROCEDURE DIVISION"
+      ],
+      "global_vars": [
+        "WS-PRODUCT",
+        "WS-TOTALS",
+        "WS-LOW-STOCK-LIMIT",
+        "WS-SEARCH-CODE",
+        "WS-FOUND-FLAG"
+      ],
+      "symbols": [
+        {
+          "name": "MAIN-PROGRAM",
+          "kind": "function",
+          "start_line": 29,
+          "end_line": 34,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 5
+        },
+        {
+          "name": "INITIALIZE-INVENTORY",
+          "kind": "function",
+          "start_line": 35,
+          "end_line": 43,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "ADD-SAMPLE-PRODUCTS",
+          "kind": "function",
+          "start_line": 44,
+          "end_line": 65,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 4
+        },
+        {
+          "name": "REGISTER-PRODUCT",
+          "kind": "function",
+          "start_line": 66,
+          "end_line": 74,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "CHECK-LOW-STOCK",
+          "kind": "function",
+          "start_line": 75,
+          "end_line": 84,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 2
+        },
+        {
+          "name": "END-IF",
+          "kind": "function",
+          "start_line": 85,
+          "end_line": 85,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 2
+        },
+        {
+          "name": "DISPLAY-SUMMARY",
+          "kind": "function",
+          "start_line": 86,
+          "end_line": 95,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        }
+      ]
+    },
+    "payroll.cob": {
+      "filepath": "examples/cobol/payroll.cob",
+      "language": "cobol",
+      "total_lines": 104,
+      "imports": [
+        "IDENTIFICATION DIVISION",
+        "ENVIRONMENT DIVISION",
+        "DATA DIVISION",
+        "PROCEDURE DIVISION"
+      ],
+      "global_vars": [
+        "EMPLOYEE-RECORD",
+        "REPORT-LINE",
+        "WS-GROSS-PAY",
+        "WS-TAX",
+        "WS-NET-PAY",
+        "WS-OVERTIME-HOURS",
+        "WS-OVERTIME-PAY",
+        "WS-TAX-RATE",
+        "WS-OVERTIME-RATE",
+        "WS-STANDARD-HOURS",
+        "WS-TOTAL-PAYROLL",
+        "WS-EMP-COUNT",
+        "WS-EOF-FLAG"
+      ],
+      "symbols": [
+        {
+          "name": "FILE-CONTROL",
+          "kind": "function",
+          "start_line": 11,
+          "end_line": 45,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "MAIN-PROGRAM",
+          "kind": "function",
+          "start_line": 46,
+          "end_line": 50,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 4
+        },
+        {
+          "name": "INITIALIZE-PROCESS",
+          "kind": "function",
+          "start_line": 51,
+          "end_line": 59,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "END-READ",
+          "kind": "function",
+          "start_line": 60,
+          "end_line": 60,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "PROCESS-EMPLOYEES",
+          "kind": "function",
+          "start_line": 61,
+          "end_line": 70,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 5
+        },
+        {
+          "name": "END-READ",
+          "kind": "function",
+          "start_line": 71,
+          "end_line": 71,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "CALCULATE-PAY",
+          "kind": "function",
+          "start_line": 72,
+          "end_line": 84,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 3
+        },
+        {
+          "name": "GENERATE-REPORT-LINE",
+          "kind": "function",
+          "start_line": 85,
+          "end_line": 93,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        },
+        {
+          "name": "FINALIZE-PROCESS",
+          "kind": "function",
+          "start_line": 94,
+          "end_line": 104,
+          "params": [],
+          "return_type": "",
+          "dependencies": [],
+          "complexity": 1
+        }
+      ]
+    }
+  },
+  "segments": {
+    "inventory::header": {
+      "segment_id": "inventory::header",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "// inventory.rs\npub mod inventory {\n    use std::collections::HashMap;\n\n    pub struct Inventory {\n        products: HashMap<i32, Product>,\n    }\n\n    #[derive(Debug)]\n    pub struct Product {\n        id: i32,\n        name: String,\n        stock: i32,\n    }\n\n    impl Inventory {\n        pub fn new() -> Self {\n            Self {\n                products: HashMap::new(),\n            }\n        }\n\n        pub fn register_product(&mut self, id: i32, name: String, stock: i32) {\n            self.products.insert(id, Product { id, name, stock });\n        }\n\n        pub fn check_low_stock(&self) -> Vec<&Product> {\n            self.products.values().filter(|p| p.stock < 5).collect()\n        }\n\n        pub fn display_summary(&self) {\n            println!(\"Inventory Summary:\");\n            for product in self.products.values() {\n                println!(\"ID: {}, Name: {}, Stock: {}\", product.id, product.name, product.stock);\n            }\n        }\n    }\n\n    pub fn initialize_inventory() -> Inventory {\n        Inventory::new()\n    }\n\n    pub fn add_sample_products(inventory: &mut Inventory) {\n        inventory.register_product(1, \"Sample Product 1\".to_string(), 10);\n        inventory.register_product(2, \"Sample Product 2\".to_string(), 3);\n    }\n\n    pub fn main_program() {\n        let mut inventory = initialize_inventory();\n        add_sample_products(&mut inventory);\n        let low_stock = inventory.check_low_stock();\n        if !low_stock.is_empty() {\n            println!(\"Low stock products:\");\n            for product in low_stock {\n                println!(\"ID: {}, Name: {}, Stock: {}\", product.id, product.name, product.stock);\n            }\n        }\n        inventory.display_summary();\n    }\n}\n\n// payroll.rs\npub mod payroll {\n    use std::collections::HashMap;\n    use std::io;\n\n    pub struct Employee {\n        id: i32,\n        name: String,\n        salary: f64,\n    }\n\n    pub struct Payroll {\n        employees: HashMap<i32, Employee>,\n    }\n\n    impl Payroll {\n        pub fn new() -> Self {\n            Self {\n                employees: HashMap::new(),\n            }\n        }\n\n        pub fn process_employees(&mut self) -> io::Result<()> {\n            // Simulating file read for demonstration\n            // In a real scenario, read from a file or database\n            self.employees.insert(1, Employee { id: 1, name: \"John Doe\".to_string(), salary: 50000.0 });\n            self.employees.insert(2, Employee { id: 2, name: \"Jane Doe\".to_string(), salary: 60000.0 });\n            Ok(())\n        }\n\n        pub fn calculate_pay(&self, id: i32) -> Option<f64> {\n            self.employees.get(&id).map(|e| e.salary)\n        }\n\n        pub fn generate_report_line(&self, id: i32) -> Option<String> {\n            self.employees.get(&id).map(|e| format!(\"ID: {}, Name: {}, Salary: {}\", e.id, e.name, e.salary))\n        }\n\n        pub fn finalize_process(&self) {\n            println!(\"Payroll process finalized.\");\n        }\n    }\n\n    pub fn file_control() -> io::Result<()> {\n        // Simulating file control for demonstration\n        Ok(())\n    }\n\n    pub fn main_program() -> io::Result<()> {\n        file_control()?;\n        let mut payroll = Payroll::new();\n        payroll.process_employees()?;\n        let pay = payroll.calculate_pay(1);\n        match pay {\n            Some(salary) => println!(\"Salary for ID 1: {}\", salary),\n            None => println!(\"Employee not found\"),\n        }\n        if let Some(line) = payroll.generate_report_line(2) {\n            println!(\"{}\", line);\n        }\n        payroll.finalize_process();\n        Ok(())\n    }\n}\n\nfn main() {\n    inventory::main_program();\n    match payroll::main_program() {\n        Ok(_) => println!(\"Payroll processed successfully\"),\n        Err(e) => eprintln!(\"Error processing payroll: {}\", e),\n    }\n}",
+      "validation_passed": false
+    },
+    "inventory::MAIN-PROGRAM": {
+      "segment_id": "inventory::MAIN-PROGRAM",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "mod inventory {\n    pub struct Inventory {\n        products: Vec<Product>,\n    }\n\n    impl Inventory {\n        pub fn new() -> Self {\n            Self { products: Vec::new() }\n        }\n\n        pub fn add_product(&mut self, product: Product) {\n            self.products.push(product);\n        }\n\n        pub fn check_low_stock(&self) -> Vec<&Product> {\n            self.products.iter().filter(|p| p.quantity < 5).collect()\n        }\n\n        pub fn display_summary(&self) {\n            println!(\"Summary:\");\n            for product in &self.products {\n                println!(\"{}: {}\", product.name, product.quantity);\n            }\n        }\n    }\n\n    pub struct Product {\n        pub name: String,\n        pub quantity: i32,\n    }\n\n    impl Product {\n        pub fn new(name: String, quantity: i32) -> Self {\n            Self { name, quantity }\n        }\n    }\n}\n\nfn main() -> Result<(), Box<dyn std::error::Error>> {\n    let mut inventory = inventory::Inventory::new();\n    initialize_inventory(&mut inventory)?;\n    add_sample_products(&mut inventory)?;\n    check_low_stock(&inventory)?;\n    inventory.display_summary();\n    Ok(())\n}\n\nfn initialize_inventory(inventory: &mut inventory::Inventory) -> Result<(), Box<dyn std::error::Error>> {\n    // TO DO: implement initialization logic\n    Ok(())\n}\n\nfn add_sample_products(inventory: &mut inventory::Inventory) -> Result<(), Box<dyn std::error::Error>> {\n    inventory.add_product(inventory::Product::new(\"Product 1\".to_string(), 10));\n    inventory.add_product(inventory::Product::new(\"Product 2\".to_string(), 3));\n    Ok(())\n}\n\nfn check_low_stock(inventory: &inventory::Inventory) -> Result<(), Box<dyn std::error::Error>> {\n    let low_stock = inventory.check_low_stock();\n    if !low_stock.is_empty() {\n        println!(\"Low stock products:\");\n        for product in low_stock {\n            println!(\"{}: {}\", product.name, product.quantity);\n        }\n    }\n    Ok(())\n}",
+      "validation_passed": false
+    },
+    "inventory::INITIALIZE-INVENTORY": {
+      "segment_id": "inventory::INITIALIZE-INVENTORY",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "struct InventorySystem {\n    total_products: i32,\n    total_value: i32,\n    low_stock_count: i32,\n}\n\nimpl InventorySystem {\n    fn initialize_inventory(&mut self) {\n        println!(\"==============================\");\n        println!(\"  SISTEMA DE INVENTARIO\");\n        println!(\"  Version Legacy COBOL\");\n        println!(\"==============================\");\n        self.total_products = 0;\n        self.total_value = 0;\n        self.low_stock_count = 0;\n    }\n}",
+      "validation_passed": false
+    },
+    "inventory::ADD-SAMPLE-PRODUCTS": {
+      "segment_id": "inventory::ADD-SAMPLE-PRODUCTS",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "struct Product {\n    prod_code: String,\n    prod_name: String,\n    prod_quantity: i32,\n    prod_price: f64,\n    prod_category: String,\n}\n\nimpl Product {\n    fn new(code: String, name: String, quantity: i32, price: f64, category: String) -> Self {\n        Product {\n            prod_code: code,\n            prod_name: name,\n            prod_quantity: quantity,\n            prod_price: price,\n            prod_category: category,\n        }\n    }\n\n    fn register_product(&self) -> Result<(), String> {\n        // Assuming register_product logic is implemented here\n        Ok(())\n    }\n}\n\nfn add_sample_products() {\n    let products = vec![\n        Product::new(String::from(\"PROD001\"), String::from(\"Laptop HP EliteBook\"), 25, 3500.00, String::from(\"Computadoras\")),\n        Product::new(String::from(\"PROD002\"), String::from(\"Mouse Logitech MX\"), 150, 89.90, String::from(\"Perifericos\")),\n        Product::new(String::from(\"PROD003\"), String::from(\"Monitor 27 4K\"), 5, 1200.00, String::from(\"Monitores\")),\n    ];\n\n    for product in products {\n        match product.register_product() {\n            Ok(_) => println!(\"Product {} registered successfully\", product.prod_code),\n            Err(e) => println!(\"Error registering product {}: {}\", product.prod_code, e),\n        }\n    }\n}\n\nfn main() {\n    add_sample_products();\n}",
+      "validation_passed": false
+    },
+    "inventory::REGISTER-PRODUCT": {
+      "segment_id": "inventory::REGISTER-PRODUCT",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "pub struct ProductRegister {\n    total_products: i32,\n    total_value: f64,\n    prod_name: String,\n    prod_code: String,\n    prod_quantity: i32,\n    prod_price: f64,\n}\n\nimpl ProductRegister {\n    pub fn register_product(&mut self) -> Result<(), String> {\n        self.total_products += 1;\n        self.total_value += (self.prod_quantity as f64) * self.prod_price;\n        println!(\"  + Registrado:  {}\", self.prod_name);\n        println!(\"    Codigo:  {}\", self.prod_code);\n        println!(\"    Cantidad:  {}\", self.prod_quantity);\n        println!(\"    Precio: S/.  {}\", self.prod_price);\n        Ok(())\n    }\n}",
+      "validation_passed": false
+    },
+    "inventory::CHECK-LOW-STOCK": {
+      "segment_id": "inventory::CHECK-LOW-STOCK",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "pub struct InventoryChecker {\n    prod_quantity: i32,\n    ws_low_stock_limit: i32,\n    low_stock_count: i32,\n    prod_name: String,\n}\n\nimpl InventoryChecker {\n    pub fn check_low_stock(&mut self) -> () {\n        println!(\" \");\n        println!(\"--- ALERTA STOCK BAJO ---\");\n        if self.prod_quantity < self.ws_low_stock_limit {\n            self.low_stock_count += 1;\n            println!(\"  ! BAJO STOCK:  {}\", self.prod_name);\n            println!(\"    Solo quedan: {} unidades\", self.prod_quantity);\n        } else {\n            println!(\"  Stock OK para ultimo producto verificado\");\n        }\n    }\n}",
+      "validation_passed": false
+    },
+    "inventory::END-IF": {
+      "segment_id": "inventory::END-IF",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "// No COBOL code was provided for migration.",
+      "validation_passed": false
+    },
+    "inventory::DISPLAY-SUMMARY": {
+      "segment_id": "inventory::DISPLAY-SUMMARY",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error[E0428]: the name `inventory` is defined multiple times\n   --> inventory.rs:135:1\n    |\n  2 | p",
+      "migrated_code": "pub struct InventorySummary {\n    total_products: i32,\n    total_value: i32,\n    low_stock_count: i32,\n}\n\nimpl InventorySummary {\n    pub fn display_summary(&self) {\n        println!(\" \");\n        println!(\"==============================\");\n        println!(\"  RESUMEN DE INVENTARIO\");\n        println!(\"  Productos:  {}\", self.total_products);\n        println!(\"  Valor total: S/.  {}\", self.total_value);\n        println!(\"  Alertas stock bajo:  {}\", self.low_stock_count);\n        println!(\"==============================\");\n    }\n}",
+      "validation_passed": false
+    },
+    "payroll::header": {
+      "segment_id": "payroll::header",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "// inventory.rs\npub struct Inventory {\n    products: Vec<Product>,\n}\n\nimpl Inventory {\n    pub fn new() -> Self {\n        Self { products: Vec::new() }\n    }\n\n    pub fn add_sample_products(&mut self) {\n        // TO DO: implement adding sample products\n    }\n\n    pub fn register_product(&mut self, product: Product) -> Result<(), String> {\n        self.products.push(product);\n        Ok(())\n    }\n\n    pub fn check_low_stock(&self) -> Vec<&Product> {\n        self.products.iter().filter(|p| p.stock < 5).collect()\n    }\n\n    pub fn display_summary(&self) {\n        println!(\"Inventory Summary:\");\n        for product in &self.products {\n            println!(\"{}: {}\", product.name, product.stock);\n        }\n    }\n}\n\n#[derive(Debug)]\nstruct Product {\n    id: i32,\n    name: String,\n    stock: i32,\n}\n\nfn main() -> Result<(), String> {\n    let mut inventory = Inventory::new();\n    inventory.add_sample_products();\n    let product = Product { id: 1, name: \"Sample Product\".to_string(), stock: 10 };\n    inventory.register_product(product)?;\n    inventory.display_summary();\n    Ok(())\n}\n\n// payroll.rs\nuse std::fs::File;\nuse std::io::{BufRead, BufReader};\n\npub struct Payroll {\n    employees: Vec<Employee>,\n}\n\nimpl Payroll {\n    pub fn new() -> Self {\n        Self { employees: Vec::new() }\n    }\n\n    pub fn process_employees(&mut self, file_path: &str) -> Result<(), String> {\n        let file = File::open(file_path).map_err(|e| e.to_string())?;\n        let reader = BufReader::new(file);\n        for line in reader.lines() {\n            let line = line.map_err(|e| e.to_string())?;\n            let employee = Employee::from_line(&line).ok_or(\"Invalid employee data\".to_string())?;\n            self.employees.push(employee);\n        }\n        Ok(())\n    }\n\n    pub fn calculate_pay(&self) -> Vec<f64> {\n        self.employees.iter().map(|e| e.calculate_pay()).collect()\n    }\n\n    pub fn generate_report_line(&self, employee: &Employee) -> String {\n        format!(\"{}: {}\", employee.name, employee.calculate_pay())\n    }\n\n    pub fn finalize_process(&self) {\n        println!(\"Payroll process finalized.\");\n    }\n}\n\n#[derive(Debug)]\nstruct Employee {\n    id: i32,\n    name: String,\n    salary: f64,\n}\n\nimpl Employee {\n    fn from_line(line: &str) -> Option<Self> {\n        let parts: Vec<&str> = line.split(',').collect();\n        if parts.len() != 3 {\n            return None;\n        }\n        let id = parts[0].parse().ok()?;\n        let name = parts[1].to_string();\n        let salary = parts[2].parse().ok()?;\n        Some(Self { id, name, salary })\n    }\n\n    fn calculate_pay(&self) -> f64 {\n        self.salary\n    }\n}\n\nfn main() -> Result<(), String> {\n    let mut payroll = Payroll::new();\n    payroll.process_employees(\"employees.txt\")?;\n    let pays = payroll.calculate_pay();\n    for (i, pay) in pays.iter().enumerate() {\n        println!(\"Employee {}: {}\", i + 1, pay);\n    }\n    payroll.finalize_process();\n    Ok(())\n}",
+      "validation_passed": false
+    },
+    "payroll::globals": {
+      "segment_id": "payroll::globals",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "pub struct Payroll {\n    ws_overtime_hours: i32,\n    ws_overtime_pay: i32,\n    ws_gross_pay: i32,\n    ws_tax: i32,\n    ws_net_pay: i32,\n    emp_salary: i32,\n    ws_tax_rate: f64,\n}\n\nimpl Payroll {\n    pub fn calculate_pay(&mut self) {\n        self.ws_overtime_hours = 0;\n        self.ws_overtime_pay = 0;\n        self.ws_gross_pay = self.emp_salary + self.ws_overtime_pay;\n        self.ws_tax = (self.ws_gross_pay as f64 * self.ws_tax_rate) as i32;\n        self.ws_net_pay = self.ws_gross_pay - self.ws_tax;\n    }\n}",
+      "validation_passed": false
+    },
+    "payroll::FILE-CONTROL": {
+      "segment_id": "payroll::FILE-CONTROL",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "use std::fs::File;\nuse std::io::{BufReader, BufRead, Write};\n\nstruct EmployeeRecord {\n    emp_id: i32,\n    emp_name: String,\n    emp_dept: String,\n    emp_salary: f64,\n    emp_hours: i32,\n    emp_status: String,\n}\n\nstruct ProgramState {\n    report_line: String,\n    ws_gross_pay: f64,\n    ws_tax: f64,\n    ws_net_pay: f64,\n    ws_overtime_hours: i32,\n    ws_overtime_pay: f64,\n    ws_tax_rate: f64,\n    ws_overtime_rate: f64,\n    ws_standard_hours: f64,\n    ws_total_payroll: f64,\n    ws_emp_count: f64,\n    ws_eof_flag: f64,\n}\n\nfn read_employee_record(reader: &mut BufReader<File>) -> Result<EmployeeRecord, std::io::Error> {\n    let mut line = String::new();\n    reader.read_line(&mut line)?;\n\n    let mut parts = line.trim().split_whitespace();\n    let emp_id = parts.next().unwrap().parse::<i32>().unwrap();\n    let emp_name = parts.next().unwrap().to_string();\n    let emp_dept = parts.next().unwrap().to_string();\n    let emp_salary = parts.next().unwrap().parse::<f64>().unwrap();\n    let emp_hours = parts.next().unwrap().parse::<i32>().unwrap();\n    let emp_status = parts.next().unwrap().to_string();\n\n    Ok(EmployeeRecord {\n        emp_id,\n        emp_name,\n        emp_dept,\n        emp_salary,\n        emp_hours,\n        emp_status,\n    })\n}\n\nfn main() -> Result<(), std::io::Error> {\n    let employee_file = File::open('EMPFILE.DAT')?;\n    let mut employee_reader = BufReader::new(employee_file);\n\n    let report_file = File::create('PAYROLL.RPT')?;\n    let mut report_writer = report_file;\n\n    let mut program_state = ProgramState {\n        report_line: String::new(),\n        ws_gross_pay: 0.0,\n        ws_tax: 0.0,\n        ws_net_pay: 0.0,\n        ws_overtime_hours: 0,\n        ws_overtime_pay: 0.0,\n        ws_tax_rate: 0.0,\n        ws_overtime_rate: 0.0,\n        ws_standard_hours: 0.0,\n        ws_total_payroll: 0.0,\n        ws_emp_count: 0.0,\n        ws_eof_flag: 0.0,\n    };\n\n    loop {\n        match read_employee_record(&mut employee_reader) {\n            Ok(employee_record) => {\n                // TO DO: implement processing logic here\n            }\n            Err(_) => break,\n        }\n    }\n\n    Ok(())\n}",
+      "validation_passed": false
+    },
+    "payroll::MAIN-PROGRAM": {
+      "segment_id": "payroll::MAIN-PROGRAM",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "mod program {\n    use std::io;\n\n    struct State {\n        end_of_file: bool,\n    }\n\n    impl State {\n        fn new() -> Self {\n            Self { end_of_file: false }\n        }\n    }\n\n    fn initialize_process() -> io::Result<()> {\n        Ok(())\n    }\n\n    fn process_employees(state: &mut State) -> io::Result<()> {\n        // TO DO: implement process_employees logic\n        Ok(())\n    }\n\n    fn finalize_process() -> io::Result<()> {\n        Ok(())\n    }\n\n    fn main() -> io::Result<()> {\n        let mut state = State::new();\n        initialize_process()?;\n        while !state.end_of_file {\n            process_employees(&mut state)?;\n        }\n        finalize_process()?;\n        Ok(())\n    }\n}\n\nfn main() -> std::io::Result<()> {\n    program::main()\n}",
+      "validation_passed": false
+    },
+    "payroll::INITIALIZE-PROCESS": {
+      "segment_id": "payroll::INITIALIZE-PROCESS",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "use std::fs::File;\nuse std::io::{BufRead, BufReader, Write};\n\nstruct EmployeeFile {\n    file: BufReader<File>,\n}\n\nimpl EmployeeFile {\n    fn new(filename: &str) -> std::io::Result<Self> {\n        let file = File::open(filename)?;\n        Ok(EmployeeFile {\n            file: BufReader::new(file),\n        })\n    }\n\n    fn read_line(&mut self, buffer: &mut String) -> std::io::Result<bool> {\n        buffer.clear();\n        let bytes_read = self.file.read_line(buffer)?;\n        Ok(bytes_read == 0)\n    }\n}\n\nstruct ReportFile {\n    file: File,\n}\n\nimpl ReportFile {\n    fn new(filename: &str) -> std::io::Result<Self> {\n        let file = File::create(filename)?;\n        Ok(ReportFile { file })\n    }\n\n    fn write(&mut self, content: &str) -> std::io::Result<()> {\n        self.file.write_all(content.as_bytes())?;\n        Ok(())\n    }\n}\n\nstruct PayrollSystem {\n    employee_file: EmployeeFile,\n    report_file: ReportFile,\n    end_of_file: bool,\n}\n\nimpl PayrollSystem {\n    fn new(employee_filename: &str, report_filename: &str) -> std::io::Result<Self> {\n        let employee_file = EmployeeFile::new(employee_filename)?;\n        let report_file = ReportFile::new(report_filename)?;\n        Ok(PayrollSystem {\n            employee_file,\n            report_file,\n            end_of_file: false,\n        })\n    }\n\n    fn initialize_process(&mut self) -> std::io::Result<()> {\n        println!(\"===================================\");\n        println!(\"  SISTEMA DE NOMINA - TECHCORP\");\n        println!(\"===================================\");\n        let mut line = String::new();\n        self.end_of_file = self.employee_file.read_line(&mut line)?;\n        Ok(())\n    }\n}\n\nfn main() -> std::io::Result<()> {\n    let mut payroll_system = PayrollSystem::new(\"employee_file.txt\", \"report_file.txt\")?;\n    payroll_system.initialize_process()?;\n    Ok(())\n}",
+      "validation_passed": false
+    },
+    "payroll::END-READ": {
+      "segment_id": "payroll::END-READ",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "fn end_read() {\n    // No implementation as per the given COBOL code snippet\n}\n\nfn main() {\n    end_read();\n}",
+      "validation_passed": false
+    },
+    "payroll::PROCESS-EMPLOYEES": {
+      "segment_id": "payroll::PROCESS-EMPLOYEES",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "mod employee_processor {\n    use std::io;\n\n    struct EmployeeProcessor {\n        ws_emp_count: i32,\n        ws_total_payroll: i32,\n        ws_net_pay: i32,\n        end_of_file: bool,\n    }\n\n    impl EmployeeProcessor {\n        fn new() -> Self {\n            Self {\n                ws_emp_count: 0,\n                ws_total_payroll: 0,\n                ws_net_pay: 0,\n                end_of_file: false,\n            }\n        }\n\n        fn calculate_pay(&mut self) -> io::Result<()> {\n            // implementation of calculate_pay\n            Ok(())\n        }\n\n        fn generate_report_line(&self) -> io::Result<()> {\n            // implementation of generate_report_line\n            Ok(())\n        }\n\n        fn read_employee_file(&mut self) -> io::Result<()> {\n            // implementation of reading employee file\n            // for demonstration, assume it's a simple read\n            // self.end_of_file = true; // or false based on read result\n            Ok(())\n        }\n\n        fn process_employees(&mut self) -> io::Result<()> {\n            if self.end_of_file {\n                return Ok(());\n            }\n\n            if \"A\".eq(\"A\") { // assuming emp_status is \"A\" for demonstration\n                self.calculate_pay()?;\n                self.generate_report_line()?;\n                self.ws_emp_count += 1;\n                self.ws_total_payroll += self.ws_net_pay;\n            }\n\n            self.read_employee_file()?;\n            Ok(())\n        }\n    }\n\n    fn main() -> io::Result<()> {\n        let mut processor = EmployeeProcessor::new();\n        processor.process_employees()?;\n        println!(\"{}\", processor.ws_emp_count);\n        println!(\"{}\", processor.ws_total_payroll);\n        Ok(())\n    }\n}",
+      "validation_passed": false
+    },
+    "payroll::CALCULATE-PAY": {
+      "segment_id": "payroll::CALCULATE-PAY",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "struct PayrollCalculator {\n    ws_standard_hours: i32,\n    ws_overtime_rate: f64,\n    ws_tax_rate: f64,\n    emp_hours: i32,\n    emp_salary: f64,\n    ws_overtime_hours: i32,\n    ws_overtime_pay: f64,\n    ws_gross_pay: f64,\n    ws_tax: f64,\n    ws_net_pay: f64,\n}\n\nimpl PayrollCalculator {\n    fn calculate_pay(&mut self) {\n        self.ws_overtime_pay = 0.0;\n        if self.emp_hours > self.ws_standard_hours {\n            self.ws_overtime_hours = self.emp_hours - self.ws_standard_hours;\n            self.ws_overtime_pay = (self.ws_overtime_hours as f64) * (self.emp_salary / self.ws_standard_hours as f64) * self.ws_overtime_rate;\n        }\n        self.ws_gross_pay = self.emp_salary + self.ws_overtime_pay;\n        self.ws_tax = self.ws_gross_pay * self.ws_tax_rate;\n        self.ws_net_pay = self.ws_gross_pay - self.ws_tax;\n    }\n}\n\nfn main() {\n    let mut calculator = PayrollCalculator {\n        ws_standard_hours: 0,\n        ws_overtime_rate: 0.0,\n        ws_tax_rate: 0.0,\n        emp_hours: 0,\n        emp_salary: 0.0,\n        ws_overtime_hours: 0,\n        ws_overtime_pay: 0.0,\n        ws_gross_pay: 0.0,\n        ws_tax: 0.0,\n        ws_net_pay: 0.0,\n    };\n    calculator.calculate_pay();\n    println!(\"{}\", calculator.ws_net_pay);\n}",
+      "validation_passed": false
+    },
+    "payroll::GENERATE-REPORT-LINE": {
+      "segment_id": "payroll::GENERATE-REPORT-LINE",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "pub struct ReportGenerator {\n    emp_name: String,\n    emp_id: i32,\n    emp_dept: String,\n    ws_gross_pay: f64,\n    ws_tax: f64,\n    ws_net_pay: f64,\n}\n\nimpl ReportGenerator {\n    pub fn generate_report_line(&self) {\n        println!(\"Empleado:  {}\", self.emp_name);\n        println!(\"  ID:  {}\", self.emp_id);\n        println!(\"  Depto:  {}\", self.emp_dept);\n        println!(\"  Salario Bruto: S/.  {}\", self.ws_gross_pay);\n        println!(\"  Impuesto: S/.  {}\", self.ws_tax);\n        println!(\"  Pago Neto: S/.  {}\", self.ws_net_pay);\n        println!(\"-----------------------------------\");\n    }\n}",
+      "validation_passed": false
+    },
+    "payroll::FINALIZE-PROCESS": {
+      "segment_id": "payroll::FINALIZE-PROCESS",
+      "state": "failed",
+      "attempts": 1,
+      "max_attempts": 3,
+      "last_error": "Compilación falló: error: prefix `DAT` is unknown\n   --> payroll.rs:170:45\n    |\n170 |     let employee_file = File::op",
+      "migrated_code": "pub struct PayrollSummary {\n    emp_count: i32,\n    total_payroll: i32,\n}\n\nimpl PayrollSummary {\n    pub fn finalize_process(&self, employee_file: &mut std::fs::File, report_file: &mut std::fs::File) -> std::io::Result<()> {\n        println!(\" \");\n        println!(\"===================================\");\n        println!(\"  RESUMEN DE NOMINA\");\n        println!(\"  Empleados procesados:  {}\", self.emp_count);\n        println!(\"  Total nómina: S/.  {}\", self.total_payroll);\n        println!(\"===================================\");\n        employee_file.sync_all()?;\n        report_file.sync_all()?;\n        Ok(())\n    }\n}",
+      "validation_passed": false
+    }
+  },
+  "total_segments": 18,
+  "segments_completed": 0,
+  "segments_failed": 18,
+  "rules_violations": [],
+  "event_log": [
+    {
+      "type": "project_initialized",
+      "detail": "cobol → rust",
+      "timestamp": "2026-05-31T18:41:32.849429"
+    },
+    {
+      "type": "state_transition",
+      "detail": "idle → analyzing (Iniciando análisis)",
+      "timestamp": "2026-05-31T18:41:32.849805"
+    },
+    {
+      "type": "state_transition",
+      "detail": "analyzing → analyzed (Análisis completado)",
+      "timestamp": "2026-05-31T18:41:32.854137"
+    },
+    {
+      "type": "state_transition",
+      "detail": "analyzed → segmenting (Segmentando código)",
+      "timestamp": "2026-05-31T18:41:32.854656"
+    },
+    {
+      "type": "state_transition",
+      "detail": "segmenting → segmented (Segmentación completada)",
+      "timestamp": "2026-05-31T18:41:32.865439"
+    },
+    {
+      "type": "state_transition",
+      "detail": "segmented → migrating (Migrando segmentos)",
+      "timestamp": "2026-05-31T18:41:32.865860"
+    },
+    {
+      "type": "state_transition",
+      "detail": "migrating → validating (Validando compilación)",
+      "timestamp": "2026-05-31T18:42:48.961938"
+    },
+    {
+      "type": "state_transition",
+      "detail": "validating → migrating (Reintentando segmentos fallidos)",
+      "timestamp": "2026-05-31T18:42:49.803039"
+    }
+  ]
+}
