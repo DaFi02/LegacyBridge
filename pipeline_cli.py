@@ -25,6 +25,9 @@ Uso:
 import sys
 import argparse
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from src.migrator.pipeline.analyzer import CodeAnalyzer
 from src.migrator.pipeline.segmenter import CodeSegmenter

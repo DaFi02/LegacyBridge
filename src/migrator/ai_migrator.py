@@ -10,6 +10,9 @@ import os
 import requests
 from dataclasses import dataclass
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 @dataclass
@@ -121,10 +124,10 @@ class AIMigrator:
 
     DEFAULT_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 
-    def __init__(self, api_key: str | None = None, model: str = "meta/llama-4-maverick-17b-128e-instruct"):
+    def __init__(self, api_key: str | None = None, model: str | None = None):
         self.api_key = api_key or self.DEFAULT_API_KEY
-        self.model = model
-        self.api_url = "https://integrate.api.nvidia.com/v1/chat/completions"
+        self.model = model or os.environ.get("NVIDIA_MODEL", "meta/llama-4-maverick-17b-128e-instruct")
+        self.api_url = os.environ.get("NVIDIA_API_URL", "https://integrate.api.nvidia.com/v1/chat/completions")
 
     def migrate(
         self,

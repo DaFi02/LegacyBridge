@@ -13,12 +13,15 @@ Uso:
 import sys
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from src.migrator.ai_migrator import AIMigrator, AIMigrationResult
 from src.migrator.validation import PodmanValidator
 
 
-# API Key de NVIDIA NIM (configurar variable de entorno)
+# API Key de NVIDIA NIM (cargada desde .env)
 NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 
 # Extensiones de salida por target
