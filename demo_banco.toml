@@ -1,0 +1,39 @@
+# ═══════════════════════════════════════════════════════════════
+# LegacyBridge — Configuración de Proyecto
+# Cliente: Banco Nacional del Perú
+# ═══════════════════════════════════════════════════════════════
+
+[client]
+name = "Banco Nacional del Perú"
+contact = "Carlos Mendoza (CTO)"
+email = "cmendoza@banconacional.pe"
+industry = "Banca & Finanzas"
+
+[project]
+name = "Migración Core Bancario"
+description = "Migración del sistema de gestión de cuentas y transacciones de COBOL a Rust"
+start_date = "2026-05-31"
+
+[source]
+path = "examples/cobol/"
+language = "cobol"
+
+[target]
+language = "rust"
+output_path = "output/demo/"
+
+[pipeline]
+max_retries = 3
+supervised = true
+generate_report = true
+compile_validation = true
+
+[ai]
+model = "meta/llama-4-maverick-17b-128e-instruct"
+temperature = 0.2
+
+[report]
+output_path = "output/demo/"
+format = "html"
+include_source = true
+include_metrics = true
