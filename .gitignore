@@ -11,3 +11,13 @@ wheels/
 
 # Environment variables (secrets)
 .env
+
+# Migration outputs (generated)
+output/pipeline_*/
+output/cobol_to_rust/
+output/cpp_to_rust/
+
+# IDE
+.idea/
+.vscode/
+*.swp

@@ -1,14 +1,35 @@
 [project]
-name = "mvp-gestion-proyectos"
-version = "0.1.0"
-description = "MVP - Software de Refactorización Automatizada de Código Legacy (Java 8 → Java 17+)"
+name = "legacybridge"
+version = "1.0.0"
+description = "Migración automatizada de código legacy (COBOL, C++, Java 8) a lenguajes modernos (Rust, Java 17) con IA + reglas determinísticas"
 readme = "README.md"
 requires-python = ">=3.14"
+license = "MIT"
+authors = [
+    { name = "DaFi02", email = "diego.andia.f@gmail.com" },
+]
+keywords = ["migration", "legacy-code", "cobol", "rust", "refactoring", "ai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Code Generators",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.14",
+]
+
 dependencies = [
     "python-docx>=1.2.0",
     "python-dotenv>=1.2.2",
     "requests>=2.34.2",
 ]
+
+[project.urls]
+Homepage = "https://github.com/DaFi02/LegacyBridge"
+Repository = "https://github.com/DaFi02/LegacyBridge"
+Issues = "https://github.com/DaFi02/LegacyBridge/issues"
+
+[project.scripts]
+legacybridge = "pipeline_cli:main"
 
 [dependency-groups]
 dev = [

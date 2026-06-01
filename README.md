@@ -72,17 +72,52 @@ src/migrator/
 
 ### Requisitos
 
-- Python 3.14+
-- [UV](https://docs.astral.sh/uv/) (gestor de paquetes)
-- [Podman](https://podman.io/) (para validación en contenedores)
-- API Key de NVIDIA NIM (opcional, para migración con IA)
+| Requisito | Versión | Instalación |
+|-----------|---------|-------------|
+| Python | 3.14+ | [python.org](https://python.org) |
+| UV | latest | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
+| Podman | 4.0+ | `sudo dnf install podman` / `brew install podman` |
+| NVIDIA NIM Key | — | [build.nvidia.com](https://build.nvidia.com/) (gratis) |
 
-### Instalación
+### Instalación (1 comando)
 
 ```bash
-git clone https://github.com/dfr።/LegacyBridge.git
+git clone https://github.com/DaFi02/LegacyBridge.git
 cd LegacyBridge
-uv sync
+./setup.sh
+```
+
+El script automáticamente:
+1. Instala dependencias Python con UV
+2. Crea `.env` desde el template
+3. Descarga imágenes Docker para compilación
+4. Ejecuta 119 tests para verificar instalación
+
+### Configuración
+
+```bash
+# Edita .env con tu API key de NVIDIA NIM
+nano .env
+```
+
+```env
+NVIDIA_API_KEY=nvapi-tu-key-aqui
+NVIDIA_MODEL=meta/llama-4-maverick-17b-128e-instruct
+```
+
+> 💡 Obtén tu key gratis en [build.nvidia.com](https://build.nvidia.com/) → busca "Llama 4 Maverick" → "Get API Key"
+
+### Comandos (Makefile)
+
+```bash
+make help          # Ver todos los comandos disponibles
+make demo          # Demo interactivo (sin API key)
+make test          # Ejecutar 119 tests
+make run-cobol     # Migrar COBOL → Rust
+make run-cpp       # Migrar C++ → Rust
+make run-java      # Migrar Java 8 → 17
+make validate DIR=output/mi-migracion/  # Validar compilación
+make clean         # Limpiar outputs
 ```
 
 ### Uso
@@ -90,37 +125,46 @@ uv sync
 #### Demo rápido (sin API key)
 ```bash
 # Ver el pipeline completo en modo demo
-uv run python pipeline_cli.py demo
+make demo
 
 # Análisis estático
-uv run python pipeline_cli.py analyze --source examples/cobol/ --context
+make analyze-cobol
 
 # Segmentación
-uv run python pipeline_cli.py segment --source examples/cobol/
+make segment-cobol
 ```
 
 #### Migración con IA + Podman
 ```bash
 # Pipeline completo: COBOL → Rust
-uv run python pipeline_cli.py run \
-    --source examples/cobol/ \
-    --output output/migrado/ \
-    --from cobol --to rust \
-    --retries 2
+make run-cobol
+
+# Pipeline completo: C++ → Rust
+make run-cpp
 
 # Ver estado del pipeline
-uv run python pipeline_cli.py status --output output/migrado/
+uv run python pipeline_cli.py status --output output/cobol_to_rust/
 
 # Validar compilación manualmente
-uv run python migrate_ai.py --validate output/migrado/
+make validate DIR=output/cobol_to_rust/
+```
+
+#### Pipeline personalizado
+```bash
+# Migrar tu propio código
+uv run python pipeline_cli.py run \
+    --source /ruta/a/tu/codigo/ \
+    --output output/mi-proyecto/ \
+    --from cobol --to rust \
+    --retries 3
 ```
 
 #### Migraciones regex (sin IA)
 ```bash
 # Java 8 → Java 17
-uv run python main.py --demo
+make run-java
 
-# C++ → Rust
+# C++ → Rust (solo regex)
 uv run python main.py --demo-rust
 ```
 
