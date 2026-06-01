@@ -16,6 +16,11 @@ wheels/
 output/pipeline_*/
 output/cobol_to_rust/
 output/cpp_to_rust/
+reports/
+
+# Node (dashboard)
+node_modules/
+dashboard/dist/
 
 # IDE
 .idea/

@@ -1,0 +1,47 @@
+# ============================================================
+# LegacyBridge — Configuración de Proyecto de Migración
+# ============================================================
+# Este archivo define los parámetros del proyecto de un cliente.
+# Copia este template y personaliza para cada engagement.
+# ============================================================
+
+[client]
+name = "TechCorp Perú S.A."
+contact = "Ing. Carlos Rodríguez"
+email = "carlos.rodriguez@techcorp.pe"
+industry = "Banca / Finanzas"
+
+[project]
+name = "Modernización Core Bancario"
+description = "Migración del sistema de transacciones COBOL a Rust para mejorar rendimiento y mantenibilidad"
+start_date = "2026-06-01"
+estimated_weeks = 4
+
+[source]
+path = "examples/cobol/"                    # Ruta al código fuente legacy
+language = "cobol"                          # cobol | cpp | java8
+# include_patterns = ["*.cob", "*.cbl"]    # Solo estos archivos
+# exclude_patterns = ["*_test.*"]          # Excluir estos
+
+[target]
+language = "rust"                           # rust | java17
+output_path = "output/client_delivery/"     # Dónde se genera el código migrado
+# preserve_comments = true                 # Preservar comentarios originales
+
+[pipeline]
+max_retries = 3                             # Reintentos por segmento fallido
+supervised = true                           # Pedir confirmación en cada fase
+generate_report = true                      # Generar reporte HTML al final
+compile_validation = true                   # Validar compilación con Podman
+
+[ai]
+# model = "meta/llama-4-maverick-17b-128e-instruct"
+# temperature = 0.1                        # Bajo = más determinístico
+# max_tokens = 16384
+
+[report]
+output_path = "reports/"                    # Dónde guardar reportes
+format = "html"                             # html | json
+include_source = true                       # Incluir código fuente en reporte
+include_metrics = true                      # Métricas de complejidad y cobertura
+company_logo = ""                           # Ruta al logo (opcional)
