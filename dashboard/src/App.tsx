@@ -25,9 +25,12 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
 
+  // En dev con proxy Vite usa /api, en producción o sin proxy usa localhost:8787
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8787'
+
   const fetchData = async () => {
     try {
-      const res = await fetch('/api/status')
+      const res = await fetch(`${API_BASE}/api/status`)
       const json = await res.json()
       if (json.status === 'no_projects') {
         setError('No hay proyectos activos')
