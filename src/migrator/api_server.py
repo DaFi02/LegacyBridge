@@ -32,6 +32,8 @@ class DashboardAPIHandler(BaseHTTPRequestHandler):
             self._serve_status()
         elif path == "/api/projects":
             self._serve_projects()
+        elif path == "/api/code":
+            self._serve_code()
         elif path == "/api/health":
             self.wfile.write(json.dumps({"status": "ok"}).encode())
         else:
@@ -101,6 +103,40 @@ class DashboardAPIHandler(BaseHTTPRequestHandler):
         if state_files:
             return str(max(state_files, key=lambda f: f.stat().st_mtime))
         return None
+
+    def _serve_code(self):
+        """Sirve pares de código fuente/migrado para comparación visual."""
+        base = Path(self.state_dir).parent  # raíz del proyecto
+        pairs = []
+
+        # Buscar archivos fuente y su equivalente migrado
+        source_dirs = {
+            "examples/cobol": ("cobol", "output/ai_cobol_rust", ".cob", ".rs"),
+            "examples/cpp_legacy": ("cpp", "output/cpp_to_rust", ".cpp", ".rs"),
+        }
+
+        for src_dir, (lang, out_dir, src_ext, tgt_ext) in source_dirs.items():
+            src_path = base / src_dir
+            out_path = base / out_dir
+            if not src_path.exists():
+                continue
+            for src_file in sorted(src_path.glob(f"*{src_ext}")):
+                tgt_file = out_path / (src_file.stem + tgt_ext)
+                source_code = src_file.read_text(encoding="utf-8", errors="replace")
+                target_code = ""
+                if tgt_file.exists():
+                    target_code = tgt_file.read_text(encoding="utf-8", errors="replace")
+                pairs.append({
+                    "source_file": src_file.name,
+                    "target_file": tgt_file.name if tgt_file.exists() else f"{src_file.stem}{tgt_ext}",
+                    "source_language": lang,
+                    "target_language": "rust",
+                    "source_code": source_code,
+                    "target_code": target_code,
+                    "status": "migrated" if target_code else "pending",
+                })
+
+        self.wfile.write(json.dumps(pairs, ensure_ascii=False).encode())
 
     def log_message(self, format, *args):
         """Silenciar logs HTTP normales."""

@@ -1,0 +1,59 @@
+{
+  "client": {
+    "name": "Banco Nacional del Perú",
+    "contact": "Carlos Mendoza (CTO)",
+    "industry": "Banca & Finanzas"
+  },
+  "project": {
+    "name": "Migración Core Bancario",
+    "description": "Migración del sistema de gestión de cuentas y transacciones de COBOL a Rust",
+    "source_language": "cobol",
+    "target_language": "rust"
+  },
+  "execution": {
+    "start_time": "2026-06-02T10:30:00",
+    "end_time": "2026-06-02T10:31:36",
+    "total_duration": 96.2,
+    "status": "completed"
+  },
+  "metrics": {
+    "total_files": 5,
+    "total_lines": 3400,
+    "total_segments": 8,
+    "segments_migrated": 8,
+    "segments_compiled": 8,
+    "compilation_rate": 100.0
+  },
+  "phases": [
+    {
+      "phase": "analyze",
+      "status": "success",
+      "duration_seconds": 4.2,
+      "timestamp": "2026-06-02T10:30:04"
+    },
+    {
+      "phase": "segment",
+      "status": "success",
+      "duration_seconds": 5.8,
+      "timestamp": "2026-06-02T10:30:10"
+    },
+    {
+      "phase": "migrate",
+      "status": "success",
+      "duration_seconds": 52.3,
+      "timestamp": "2026-06-02T10:31:02"
+    },
+    {
+      "phase": "validate",
+      "status": "success",
+      "duration_seconds": 28.0,
+      "timestamp": "2026-06-02T10:31:30"
+    },
+    {
+      "phase": "assemble",
+      "status": "success",
+      "duration_seconds": 5.9,
+      "timestamp": "2026-06-02T10:31:36"
+    }
+  ]
+}

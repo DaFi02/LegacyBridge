@@ -20,10 +20,21 @@ interface DashboardData {
   }>
 }
 
+interface CodePair {
+  source_file: string
+  target_file: string
+  source_language: string
+  target_language: string
+  source_code: string
+  target_code: string
+  status: string
+}
+
 function App() {
   const [data, setData] = useState<DashboardData | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const [codePairs, setCodePairs] = useState<CodePair[]>([])
 
   // En dev con proxy Vite usa /api, en producción o sin proxy usa localhost:8787
   const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8787'
@@ -45,8 +56,17 @@ function App() {
     }
   }
 
+  const fetchCode = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/api/code`)
+      const json = await res.json()
+      if (Array.isArray(json)) setCodePairs(json)
+    } catch { /* silenciar */ }
+  }
+
   useEffect(() => {
     fetchData()
+    fetchCode()
     const interval = setInterval(fetchData, 3000) // Poll every 3s
     return () => clearInterval(interval)
   }, [])
@@ -62,6 +82,7 @@ function App() {
       <ProgressSection metrics={data.metrics} />
       <ProjectInfo data={data} />
       <PhasesTable phases={data.phases} />
+      {codePairs.length > 0 && <CodeComparison pairs={codePairs} />}
     </div>
   )
 }
@@ -209,6 +230,56 @@ function PhasesTable({ phases }: { phases: DashboardData['phases'] }) {
           ))}
         </tbody>
       </table>
+    </div>
+  )
+}
+
+function CodeComparison({ pairs }: { pairs: CodePair[] }) {
+  const [selected, setSelected] = useState(0)
+  const pair = pairs[selected]
+
+  return (
+    <div className="section">
+      <h2>Comparación de Código: Legacy → Moderno</h2>
+      
+      {/* File selector tabs */}
+      <div className="code-tabs">
+        {pairs.map((p, i) => (
+          <button
+            key={i}
+            className={`code-tab ${i === selected ? 'active' : ''}`}
+            onClick={() => setSelected(i)}
+          >
+            <span className={`tab-status tab-${p.status}`}>
+              {p.status === 'migrated' ? '✓' : '○'}
+            </span>
+            {p.source_file}
+          </button>
+        ))}
+      </div>
+
+      {/* Code comparison */}
+      <div className="code-comparison">
+        <div className="code-panel">
+          <div className="code-panel-header">
+            <span className="code-lang legacy">{pair.source_language.toUpperCase()}</span>
+            <span className="code-filename">{pair.source_file}</span>
+            <span className="code-badge legacy-badge">LEGACY</span>
+          </div>
+          <pre className="code-block"><code>{pair.source_code}</code></pre>
+        </div>
+        
+        <div className="code-arrow">→</div>
+        
+        <div className="code-panel">
+          <div className="code-panel-header">
+            <span className="code-lang modern">{pair.target_language.toUpperCase()}</span>
+            <span className="code-filename">{pair.target_file}</span>
+            <span className="code-badge modern-badge">MIGRADO ✓</span>
+          </div>
+          <pre className="code-block"><code>{pair.target_code || '// Pendiente de migración...'}</code></pre>
+        </div>
+      </div>
     </div>
   )
 }
