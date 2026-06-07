@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel de Control - Inventario</title>
+    <meta charset="utf-8">
+    <!-- 
+        Sistema de Panel de Control Legacy
+        Tecnología: HTML4 + CSS2 + JavaScript vanilla (ES3/IE6 compatible)
+        Año: ~2005
+        Patrón: Todo en un archivo, inline styles, tablas para layout
+    -->
+    <style>
+        body {
+            font-family: Verdana, Arial, sans-serif;
+            font-size: 12px;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 10px;
+        }
+        table.layout {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .header-table {
+            background-color: #003366;
+            color: white;
+            width: 100%;
+            padding: 8px;
+        }
+        .nav-cell {
+            background-color: #e8e8e8;
+            width: 180px;
+            vertical-align: top;
+            padding: 10px;
+            border-right: 1px solid #ccc;
+        }
+        .content-cell {
+            padding: 15px;
+            vertical-align: top;
+        }
+        .nav-link {
+            display: block;
+            padding: 5px 8px;
+            margin: 2px 0;
+            color: #003366;
+            text-decoration: none;
+            border-bottom: 1px dotted #ccc;
+        }
+        .nav-link:hover {
+            background-color: #d0d0f0;
+        }
+        .data-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .data-table th {
+            background-color: #336699;
+            color: white;
+            padding: 6px;
+            text-align: left;
+            font-size: 11px;
+        }
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 5px;
+            font-size: 11px;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        .btn {
+            background-color: #336699;
+            color: white;
+            border: 1px outset #aaa;
+            padding: 4px 12px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #4477aa;
+        }
+        .status-ok { color: green; font-weight: bold; }
+        .status-warn { color: orange; font-weight: bold; }
+        .status-err { color: red; font-weight: bold; }
+        .summary-box {
+            border: 1px solid #ccc;
+            background: white;
+            padding: 10px;
+            margin: 5px;
+            float: left;
+            width: 150px;
+            text-align: center;
+        }
+        .summary-box .number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #336699;
+        }
+        .clearfix { clear: both; }
+        #clock { float: right; font-size: 14px; }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: #e0e0e0;
+            font-size: 10px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header con tabla (layout antiguo) -->
+<table class="header-table" cellpadding="0" cellspacing="0">
+<tr>
+    <td><b>&#9733; Panel de Control - Inventario Central</b></td>
+    <td align="right"><span id="clock">--:--:--</span></td>
+</tr>
+</table>
+
+<br>
+
+<!-- Layout principal con tablas -->
+<table class="layout">
+<tr>
+    <!-- Navegación lateral -->
+    <td class="nav-cell">
+        <b>Menú</b><br><br>
+        <a href="#" class="nav-link" onclick="showSection('dashboard')">&#9656; Dashboard</a>
+        <a href="#" class="nav-link" onclick="showSection('productos')">&#9656; Productos</a>
+        <a href="#" class="nav-link" onclick="showSection('ventas')">&#9656; Ventas</a>
+        <a href="#" class="nav-link" onclick="showSection('reportes')">&#9656; Reportes</a>
+        <br><br>
+        <hr>
+        <span style="font-size:10px; color:#999">
+            Usuario: admin<br>
+            Sesión: activa
+        </span>
+    </td>
+
+    <!-- Contenido principal -->
+    <td class="content-cell">
+        <div id="section-dashboard">
+            <h3 style="margin:0 0 10px 0; color:#003366;">Resumen del Sistema</h3>
+            
+            <!-- Summary boxes -->
+            <div class="summary-box">
+                <div class="number" id="total-productos">0</div>
+                <div>Productos</div>
+            </div>
+            <div class="summary-box">
+                <div class="number" id="total-ventas">0</div>
+                <div>Ventas Hoy</div>
+            </div>
+            <div class="summary-box">
+                <div class="number" id="total-ingresos">S/.0</div>
+                <div>Ingresos</div>
+            </div>
+            <div class="summary-box">
+                <div class="number" id="alertas-count">0</div>
+                <div>Alertas</div>
+            </div>
+            <div class="clearfix"></div>
+
+            <br>
+            <h4>Últimas Transacciones</h4>
+            <table class="data-table" id="tabla-transacciones">
+                <tr>
+                    <th>Hora</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                </tr>
+            </table>
+        </div>
+
+        <div id="section-productos" style="display:none">
+            <h3 style="margin:0 0 10px 0; color:#003366;">Catálogo de Productos</h3>
+            <input type="text" id="buscar-prod" placeholder="Buscar..." style="padding:4px; width:200px;">
+            <input type="button" class="btn" value="Buscar" onclick="buscarProducto()">
+            <input type="button" class="btn" value="Agregar Nuevo" onclick="alert('Función no implementada')">
+            <table class="data-table" id="tabla-productos">
+                <tr>
+                    <th>Código</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Estado</th>
+                </tr>
+            </table>
+        </div>
+    </td>
+</tr>
+</table>
+
+<div class="footer">
+    Sistema de Inventario Central v3.2 | &copy; 2005 TechSolutions SAC | Todos los derechos reservados
+</div>
+
+<script>
+// JavaScript legacy (ES3 compatible, sin let/const, sin arrow functions)
+var productos = [
+    {codigo: "P001", nombre: "Laptop HP ProBook", precio: 3200.00, stock: 15, minimo: 5},
+    {codigo: "P002", nombre: "Mouse Inalámbrico", precio: 45.00, stock: 230, minimo: 50},
+    {codigo: "P003", nombre: "Teclado Mecánico", precio: 189.00, stock: 3, minimo: 10},
+    {codigo: "P004", nombre: "Monitor 24 LED", precio: 890.00, stock: 28, minimo: 8},
+    {codigo: "P005", nombre: "Cable HDMI 2m", precio: 25.00, stock: 2, minimo: 20},
+    {codigo: "P006", nombre: "Webcam HD", precio: 120.00, stock: 45, minimo: 15},
+    {codigo: "P007", nombre: "Disco SSD 500GB", precio: 250.00, stock: 60, minimo: 10},
+    {codigo: "P008", nombre: "Memoria RAM 16GB", precio: 180.00, stock: 35, minimo: 12}
+];
+
+var ventas = [];
+var totalIngresos = 0;
+
+function init() {
+    renderProductos();
+    simularVentas();
+    actualizarResumen();
+    iniciarReloj();
+}
+
+function renderProductos() {
+    var tabla = document.getElementById("tabla-productos");
+    for (var i = 0; i < productos.length; i++) {
+        var prod = productos[i];
+        var tr = document.createElement("tr");
+        var estado = "";
+        if (prod.stock <= prod.minimo) {
+            estado = '<span class="status-err">BAJO</span>';
+        } else if (prod.stock <= prod.minimo * 2) {
+            estado = '<span class="status-warn">MEDIO</span>';
+        } else {
+            estado = '<span class="status-ok">OK</span>';
+        }
+        tr.innerHTML = "<td>" + prod.codigo + "</td>" +
+                       "<td>" + prod.nombre + "</td>" +
+                       "<td>S/. " + prod.precio.toFixed(2) + "</td>" +
+                       "<td>" + prod.stock + "</td>" +
+                       "<td>" + estado + "</td>";
+        tabla.appendChild(tr);
+    }
+}
+
+function simularVentas() {
+    var transacciones = [
+        {hora: "09:15", producto: "Mouse Inalámbrico", cantidad: 3, monto: 135.00},
+        {hora: "09:42", producto: "Cable HDMI 2m", cantidad: 5, monto: 125.00},
+        {hora: "10:05", producto: "Laptop HP ProBook", cantidad: 1, monto: 3200.00},
+        {hora: "10:30", producto: "Disco SSD 500GB", cantidad: 2, monto: 500.00},
+        {hora: "11:15", producto: "Webcam HD", cantidad: 4, monto: 480.00},
+        {hora: "11:50", producto: "Memoria RAM 16GB", cantidad: 3, monto: 540.00}
+    ];
+
+    var tabla = document.getElementById("tabla-transacciones");
+    for (var i = 0; i < transacciones.length; i++) {
+        var t = transacciones[i];
+        totalIngresos += t.monto;
+        ventas.push(t);
+        var tr = document.createElement("tr");
+        tr.innerHTML = "<td>" + t.hora + "</td>" +
+                       "<td>" + t.producto + "</td>" +
+                       "<td>" + t.cantidad + "</td>" +
+                       "<td>S/. " + t.monto.toFixed(2) + "</td>" +
+                       '<td><span class="status-ok">OK</span></td>';
+        tabla.appendChild(tr);
+    }
+}
+
+function actualizarResumen() {
+    document.getElementById("total-productos").innerHTML = productos.length;
+    document.getElementById("total-ventas").innerHTML = ventas.length;
+    document.getElementById("total-ingresos").innerHTML = "S/." + totalIngresos.toFixed(0);
+    
+    // Contar alertas de stock bajo
+    var alertas = 0;
+    for (var i = 0; i < productos.length; i++) {
+        if (productos[i].stock <= productos[i].minimo) {
+            alertas++;
+        }
+    }
+    document.getElementById("alertas-count").innerHTML = alertas;
+}
+
+function buscarProducto() {
+    var busqueda = document.getElementById("buscar-prod").value.toLowerCase();
+    var filas = document.getElementById("tabla-productos").getElementsByTagName("tr");
+    for (var i = 1; i < filas.length; i++) {
+        var texto = filas[i].innerHTML.toLowerCase();
+        if (texto.indexOf(busqueda) !== -1) {
+            filas[i].style.display = "";
+        } else {
+            filas[i].style.display = "none";
+        }
+    }
+}
+
+function showSection(seccion) {
+    document.getElementById("section-dashboard").style.display = "none";
+    document.getElementById("section-productos").style.display = "none";
+    document.getElementById("section-" + seccion).style.display = "block";
+}
+
+function iniciarReloj() {
+    setInterval(function() {
+        var ahora = new Date();
+        var h = ahora.getHours();
+        var m = ahora.getMinutes();
+        var s = ahora.getSeconds();
+        if (h < 10) h = "0" + h;
+        if (m < 10) m = "0" + m;
+        if (s < 10) s = "0" + s;
+        document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
+    }, 1000);
+}
+
+// Inicializar al cargar
+window.onload = init;
+</script>
+
+</body>
+</html>
